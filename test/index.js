@@ -1,14 +1,16 @@
-import { assert } from 'chai';
-import defaultAwesomeFunction, { awesomeFunction } from '../src';
+import { expect } from 'chai';
 
-describe('Awesome test.', () => {
-  it('should test default awesome function', () => {
-    const expectedVal = 'I am the Default Awesome Function, fellow comrade! - Dinesh';
-    assert(defaultAwesomeFunction('Dinesh') === expectedVal, 'Default not awesome :(');
-  });
+import React from 'react';
+import { configure, shallow } from 'enzyme';
 
-  it('should test awesome function', () => {
-    const expectedVal = 'I am just an Awesome Function';
-    assert(awesomeFunction() === expectedVal, 'Named awesome :(');
+import Adapter from 'enzyme-adapter-react-16';
+import EnsResolver from '../src/index';
+
+configure({ adapter: new Adapter() });
+
+describe('App component testing', () => {
+  it('renders welcome message', () => {
+    const wrapper = shallow(<EnsResolver lookup="0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359" />);
+    expect(wrapper).to.equal('ethereumfoundation.eth');
   });
 });
