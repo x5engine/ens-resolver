@@ -1,14 +1,38 @@
-# NPM Module Boilerplate
+# Two ways ENS Resolver
 
-[![Build Status](https://travis-ci.org/flexdinesh/npm-module-boilerplate.svg?branch=master)](https://travis-ci.org/flexdinesh/npm-module-boilerplate) [![dependencies Status](https://david-dm.org/flexdinesh/npm-module-boilerplate/status.svg)](https://david-dm.org/flexdinesh/npm-module-boilerplate) [![devDependencies Status](https://david-dm.org/flexdinesh/npm-module-boilerplate/dev-status.svg)](https://david-dm.org/flexdinesh/npm-module-boilerplate?type=dev) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+# Installation
 
-**Start developing your NPM module in seconds** ✨
+`npm i -S ens-resolver`
 
-Readymade boilerplate setup with all the best practices to kick start your npm/node module development.
+**Resolver your ENS name or Ethereum Address** ✨
+
+Give it a try!
+[DEMO](https://codesandbox.io/s/twowaysensresolver-2usbm)
 
 Happy hacking =)
 
-# Features
+# Usage
+```
+import React from "react";
+import ReactDOM from "react-dom";
+import EnsResolver from "ens-resolver";
+
+// First one from ENS name to ETH address
+// Second on from ETH address to ENS name
+function App() {
+  return (
+    <div className="App">
+      <h1>Two ways ENS Resolver</h1>
+      <EnsResolver lookup="0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359" />
+      {/*expected result: ethereumfoundation.eth */}
+      <EnsResolver lookup="ethereumfoundation.eth" />
+      {/*expected result: 0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359 */}
+    </div>
+  );
+}
+```
+
+# Technologies
 
 * **ES6/ESNext** - Write _ES6_ code and _Babel_ will transpile it to ES5 for backwards compatibility
 * **Test** - _Mocha_ with _Istanbul_ coverage
@@ -19,19 +43,14 @@ Happy hacking =)
 # Commands
 - `npm run clean` - Remove `lib/` directory
 - `npm test` - Run tests with linting and coverage results.
-- `npm test:only` - Run tests without linting or coverage.
 - `npm test:watch` - You can even re-run tests on file changes!
 - `npm test:prod` - Run tests with minified code.
 - `npm run test:examples` - Test written examples on pure JS for better understanding module usage.
 - `npm run lint` - Run ESlint with airbnb-config
-- `npm run cover` - Get coverage report for your code.
 - `npm run build` - Babel will transpile ES6 => ES5 and minify the code.
 - `npm run prepublish` - Hook for npm. Do all the checks before publishing your module.
-
-# Installation
-Just clone this repo and remove `.git` folder.
 
 
 # License
 
-MIT © Dinesh Pandiyan
+MIT © X5 Engine
