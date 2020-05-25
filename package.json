@@ -1,6 +1,6 @@
 {
   "name": "ens-resolver",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ENS Resolver that works in both ways (ENS name <--> Ethereum Address)",
   "main": "./lib/index.js",
   "scripts": {
