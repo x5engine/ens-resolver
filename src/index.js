@@ -1,18 +1,20 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { ethers } from 'ethers';
+import ENS from "ethjs-ens";
+import HttpProvider from 'ethjs-provider-http';
+
+const ens = new ENS({ provider: window.web3.currentProvider, network: 1 });
+//web3 must be injected or fail :'( use infura
 
 class EnsResolver extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      provider: ethers.getDefaultProvider(),
       lookup: props.lookup
     };
   }
 
   componentDidMount() {
-    const { lookup } = this.state;
     if (lookup.length && lookup[0] === '0' && lookup[1] === 'x') {
       this.fetchName(lookup);
     } else if (lookup.length) {
@@ -21,9 +23,8 @@ class EnsResolver extends React.Component {
   }
 
   fetchAddress = (lookup) => {
-    const { provider } = this.state;
     try {
-      provider.resolveName(lookup).then((address) => {
+      ens.reverse(lookup).then((address) => {
         this.setState({ lookup: address });
       });
     } catch (ex) {
@@ -32,9 +33,8 @@ class EnsResolver extends React.Component {
   };
 
   fetchName = (lookup) => {
-    const { provider } = this.state;
     try {
-      provider.lookupAddress(lookup).then((name) => {
+      const result = ens.reverse(lookup).then((name) => {
         this.setState({ lookup: name });
       });
     } catch (ex) {
